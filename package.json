@@ -1,0 +1,26 @@
+{ "name": "web6",
+  "version": "0.1.0",
+  "description": "Shim the \"web\" framework's `socketHandler` function for node.js v6.x",
+  "keywords": [ "web", "socketHandler", "shim" ],
+
+  "author": "M.K. (https://github.com/mk-pmb)",
+  "homepage": "https://github.com/mk-pmb/web6-node#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-pmb/web6-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mk-pmb/web6-node/issues"
+  },
+
+  "private": false, "license": "ISC",
+
+  "main": "web.js",
+  "scripts": { "test": "nodejs test/all.js" },
+  "directories": { "test": "test" },
+
+  "devDependencies": { "equal-pmb": "^0.1.0" },
+
+
+  "npm vs. BOM = Unexpected token": "-*- coding: UTF-8 -*-"
+}
