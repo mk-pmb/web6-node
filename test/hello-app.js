@@ -2,15 +2,6 @@
 /* -*- tab-width: 2 -*- */
 'use strict';
 
-
-function filterKeys(obj, keys) {
-  var r = Object.create(null);
-  if (!Array.isArray(keys)) { keys = String(keys).match(/\S+/g); }
-  keys.forEach(function (k) { r[k] = obj[k]; });
-  return r;
-}
-
-
 module.exports = function appFactory(opts) {
   opts = (opts || false);
   var greeting = (opts.greeting || 'Hello.') + '\n';
