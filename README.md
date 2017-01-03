@@ -20,15 +20,18 @@ Usage
 
 <!--#include file="test/hello-server.js" start="  //#u" stop="  //#r"
   outdent="  " code="javascript" -->
-<!--#verbatim lncnt="11" -->
+<!--#verbatim lncnt="14" -->
 ```javascript
 var web = require('web6'), makeApp = require('./hello-app.js'),
   appOpts = { greeting: 'Hello World!' },
   app = makeApp(appOpts),   // function (request, respond) { … }
-  tcpServer = net.createServer(),
-  tcpConnectionHandler = web.socketHandler(app, { debug: true });
+  tcpServer = net.createServer(), tcpConnectionHandler;
 
+if (cfg.addExtras) { app = cfg.addExtras(app); }
+
+tcpConnectionHandler = web.socketHandler(app, { debug: true });
 tcpServer.on('connection', tcpConnectionHandler);
+
 tcpServer.on('listening', announceServerUrl(tcpServer));
 tcpServer.listen(cfg.port, cfg.iface);
 ```
