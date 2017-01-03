@@ -44,7 +44,12 @@ EX.makeRespondFunc = function (httpResp, opts) {
       }
     }
     httpResp.writeHead(+code, headers);
-    if (streaming) { body.pipe(httpResp); } else { httpResp.end(body); }
+    if (streaming) {
+      httpResp.on('close', body.end.bind(body));
+      body.pipe(httpResp);
+    } else {
+      httpResp.end(body);
+    }
     httpResp = false;
   };
 };
