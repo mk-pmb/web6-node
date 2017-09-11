@@ -18,15 +18,22 @@ please let me know so I can improve this shim to accomodate them.
 Usage
 -----
 
+from [test/hello-server.js](test/hello-server.js):
+
 <!--#include file="test/hello-server.js" start="  //#u" stop="  //#r"
   outdent="  " code="javascript" -->
-<!--#verbatim lncnt="14" -->
+<!--#verbatim lncnt="19" -->
 ```javascript
 var web = require('web6'), makeApp = require('./hello-app.js'),
-  appOpts = { greeting: 'Hello World!' },
-  app = makeApp(appOpts),   // function (request, respond) { … }
+  app, appOpts = { greeting: 'Hello World!' },
   tcpServer = net.createServer(), tcpConnectionHandler;
 
+if (cfg.announceExtras) {
+  appOpts.greeting += ('\n\nWere you looking for one of these extras?\n' +
+    cfg.announceExtras);
+}
+
+app = makeApp(appOpts);   // function (request, respond) { … }
 if (cfg.addExtras) { app = cfg.addExtras(app); }
 
 tcpConnectionHandler = web.socketHandler(app, { debug: true });
@@ -37,6 +44,9 @@ tcpServer.listen(cfg.port, cfg.iface);
 ```
 <!--/include-->
 
+
+More examples:
+* [test/countdown-server.js](test/countdown-server.js)
 
 
 <!--#toc stop="scan" -->

@@ -9,6 +9,7 @@ var EX = module.exports, through2 = require('through2'),
 EX.run = function countDownServer() {
   helloServer.run({
     addExtras: EX.middleware({ path: '/countdown.txt' }),
+    announceExtras: 'Count-down @ /countdown.txt',
   });
 };
 

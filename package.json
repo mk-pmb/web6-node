@@ -1,5 +1,5 @@
 { "name": "web6",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Shim the \"web\" framework's `socketHandler` function for node.js v6.x",
   "keywords": [ "web", "socketHandler", "shim" ],
 

@@ -4,17 +4,21 @@
 
 var EX = module.exports, net = require('net'), web6 = require('web6'),
   kisi = require('./kitchen-sink.js'),
-  announceServerUrl = kisi.makeUrlAnnouncer,
-  makeHelloApp = require('./hello-app.js');
+  announceServerUrl = kisi.makeUrlAnnouncer;
 
 EX.run = function readmeDemo(cfg) {
   cfg = Object.assign({}, kisi.cfg, cfg);
   //#u
   var web = require('web6'), makeApp = require('./hello-app.js'),
-    appOpts = { greeting: 'Hello World!' },
-    app = makeApp(appOpts),   // function (request, respond) { … }
+    app, appOpts = { greeting: 'Hello World!' },
     tcpServer = net.createServer(), tcpConnectionHandler;
 
+  if (cfg.announceExtras) {
+    appOpts.greeting += ('\n\nWere you looking for one of these extras?\n' +
+      cfg.announceExtras);
+  }
+
+  app = makeApp(appOpts);   // function (request, respond) { … }
   if (cfg.addExtras) { app = cfg.addExtras(app); }
 
   tcpConnectionHandler = web.socketHandler(app, { debug: true });
