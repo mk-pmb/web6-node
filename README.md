@@ -11,7 +11,11 @@ v6.x
 
 In theory, you can just add the digit `6` to your `require('web')` and it
 should work. If you know of any tests for "web" interface compatibility,
-please let me know so I can improve this shim to accomodate them.
+[please let me know](https://github.com/creationix/node-web/issues/9)
+so I can improve this shim to accomodate them.
+
+* [web framework repo](https://github.com/creationix/node-web)
+* [web framework on npm](https://www.npmjs.com/package/web)
 
 
 
